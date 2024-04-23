@@ -42,7 +42,7 @@
                                     '
                                         <div class="text-center row mb-2" >
                                             <div class="col-12">                                        
-                                                <button class="btn btn-blue w-100" type="submit" id="btn_submit">Ronde Berikutnya</button>
+                                                <button class="btn btn-blue w-100" type="button" onClick="locations()" id="btn_submit">Ronde Berikutnya</button>
                                             </div>
                                         </div>
                                         ';
@@ -61,27 +61,11 @@
 <script src="<?php echo base_url('/public/lib/select2/js/i18n/id.js') ?>"></script>
 
 <script>
-    $("#formUsername").on("submit", function(e) {
-        e.preventDefault();
-        $("#btn_submit").disableBtn();
+    function locations() {
+        window.location.href = 'Form';
+    }
 
-        $.ajax({
-            url: "HomeController/SubmitUsername",
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            type: "POST",
-            data: $(this).serialize(),
-            success: function(response) {
-                if (response == "1") {
-                    window.location = "/test";
-                } else if (response == "0") {
-                    $('#error-username').fadeIn(300);
-                    $("#btn_submit").enableBtn();
-                }
-            }
-        });
-    });
+
 
     jQuery.fn.extend({
         disableBtn: function() {

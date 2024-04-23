@@ -12,7 +12,6 @@
     <link href="<?php echo base_url('/public/css/app.min.css') ?>" rel="stylesheet" type="text/css" id="app-style" />
     <link href="<?php echo base_url('/public/custom/custom.css') ?>" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="<?= base_url(); ?>public/img/icon.png">
-
     <script src="<?php echo base_url('/public/js/vendor.min.js') ?>"></script>
 </head>
 

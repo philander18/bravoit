@@ -10,7 +10,7 @@
     <hr class="sidebar-divider my-0">
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="/ci-bravo/dashboard">
+        <a class="nav-link" href="<?= base_url('dashboard') ?>">
         <i class="fas fa-fw fa-user-shield"></i>
         <span>Dashboard</span></a>
     </li>
@@ -18,17 +18,17 @@
     <hr class="sidebar-divider">
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="/ci-bravo/games1">
+        <a class="nav-link" href="<?= base_url('games1') ?>">
         <i class="fas fa-fw fa-table"></i>
         <span>Games 1</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/ci-bravo/games2">
+        <a class="nav-link" href="<?= base_url('games2') ?>">
         <i class="fas fa-fw fa-table"></i>
         <span>Games 2</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/ci-bravo/games3">
+        <a class="nav-link" href="<?= base_url('games3') ?>">
         <i class="fas fa-fw fa-table"></i>
         <span>Games 3</span></a>
     </li>

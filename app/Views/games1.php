@@ -9,7 +9,7 @@
 
 
 <?= $this->section('content') ?>
-<div class="container-fluid">
+<div class="container-fluid" >
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">GAMES 1</h1>
@@ -39,6 +39,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script>
+//   setTimeout(function(){
+//    window.location.reload();
+// }, 5000);
                 var tabel = null;
                 $(document).ready(function() {
                     tabel = $('#table-artikel-query').DataTable({

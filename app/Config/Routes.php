@@ -43,3 +43,8 @@ $routes->post('/game3_start', 'HomeController::game3_start');
 $routes->post('/game1_finalisasi', 'HomeController::game1_finalisasi');
 $routes->post('/game2_finalisasi', 'HomeController::game2_finalisasi');
 $routes->post('/game3_finalisasi', 'HomeController::game3_finalisasi');
+
+//reset
+$routes->post('/game1_reset', 'HomeController::game1_reset');
+$routes->post('/game2_reset', 'HomeController::game2_reset');
+$routes->post('/game3_reset', 'HomeController::game3_reset');

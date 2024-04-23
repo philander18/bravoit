@@ -11,6 +11,8 @@
     <link href="<?php echo base_url('/public/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('/public/css/app.min.css') ?>" rel="stylesheet" type="text/css" id="app-style" />
     <link href="<?php echo base_url('/public/custom/custom.css') ?>" rel="stylesheet" type="text/css" />
+
+    <link href="<?php echo base_url('/public/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css') ?>" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="<?= base_url(); ?>public/img/icon.png">
     <script src="<?php echo base_url('/public/js/vendor.min.js') ?>"></script>
 </head>
@@ -27,11 +29,26 @@
                 <div class="col-md-8 col-lg-6 col-xl-4 col-12">
                     <div class="card">
                         <div class="card-body p-4" style="border-radius: 4px">
+
                             <form id="formJawaban" class="">
+
                                 <?php
                                 if ($_SESSION['user_status'] == $_SESSION['game_status']) {
+                                    echo '<div id="container-soal" style="display: none; margin-bottom:5vh;" >
+                            <h4>';
+                                    if ($_SESSION['game_status'] == 1) {
+                                        echo "Soal 1 : <br> Menyebutkan nama pegawai Medion IT, baik managerial maupun non managerial";
+                                    } else if ($_SESSION['game_status'] == 2) {
+                                        echo "Soal 2 : <br> Menyebutkan Produk Medion ditujukan untuk Hewan Apa Saja";
+                                    } else if ($_SESSION['game_status'] == 3) {
+                                        echo "Soal 3 : <br> Menyebutkan Nilai-nilai Medion Care";
+                                    }
+
+                                    echo '</h4>
+                        </div>';
                                     echo
                                     '
+                                    
                                     <div style="">
                                         <div class="row py-4" id="title_cont">
                                             <p class="m-0">Aplikasi down di malam minggu</p>
@@ -54,11 +71,12 @@
     
                                     <div class="row" style="display: none" id="jawaban_cont">
                                         <div class="col-12">
-                                            <select id="jawaban" name="jawaban[]" class="form-control">
+                                            <select multiple data-role="tagsinput" name="jawaban[]" id="jawaban" placeholder="isi Jawaban anda">
                                             </select>
                                         </div>
                                     </div>
-    
+                                    
+
                                     <div class="text-center" style="display:none">
                                         <button class="btn btn-success" type="submit" id="btn_submit">Kirim</button>
                                     </div>
@@ -84,23 +102,9 @@
 
 <script src="<?php echo base_url('/public/lib/select2/js/select2.min.js') ?>"></script>
 <script src="<?php echo base_url('/public/lib/select2/js/i18n/id.js') ?>"></script>
+<script src="<?php echo base_url('/public/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js') ?>"></script>
 
 <script>
-    $('#jawaban').select2({
-        multiple: true,
-        allowClear: false,
-        placeholder: 'Isi Jawaban Anda',
-        width: '100%',
-        dropdownParent: $("#formJawaban"),
-        tags: true,
-        language: {
-            noResults: function() {
-                return "Silakan tulis jawaban Anda"
-            }
-        },
-        tokenSeparators: [',']
-    })
-
     function long_polling_timer_start() {
         $.ajax({
             async: true,
@@ -126,6 +130,7 @@
 
     $(document).ready(function() {
         $('#btn_timer').fadeIn(300);
+        $('.bootstrap-tagsinput').addClass('form-control');
 
         long_polling_timer_start();
     })
@@ -135,7 +140,8 @@
         $('#btn_timer_cont').fadeOut(300);
         $('#demo_cont').fadeIn(300);
         $('#jawaban_cont').fadeIn(300);
-        $('#jawaban').select2('open');
+        $('#container-soal').fadeIn(300);
+        // $('#jawaban').select2('open');
 
         var countDownDate = new Date();
         countDownDate.setSeconds(countDownDate.getSeconds() + 62);

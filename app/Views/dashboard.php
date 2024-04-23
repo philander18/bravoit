@@ -21,8 +21,9 @@
                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
                             </div>
                     <div class="row no-gutters align-items-center">
-                        <button onclick="start1()">Start Games 1</button>
-                        <button onclick="finalisasi1()">Finalisasi Games 1</button>
+                        <button style="margin:5px;" onclick="start1()">Start Games 1</button>
+                        <button style="margin:5px;" onclick="finalisasi1()">Finalisasi Games 1</button>
+                        <button onclick="reset1()">Reset Games 1</button>
                     </div>
                 </div>
             </div>
@@ -35,8 +36,9 @@
                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
                             </div>
                     <div class="row no-gutters align-items-center">
-                    <button onclick="start2()">Start Games 2</button>
-                    <button onclick="finalisasi2()">Finalisasi Games 2</button>
+                    <button style="margin:5px;" onclick="start2()">Start Games 2</button>
+                    <button style="margin:5px;" onclick="finalisasi2()">Finalisasi Games 2</button>
+                    <button onclick="reset2()">Reset Games 2</button>
                     </div>
                 </div>
             </div>
@@ -51,7 +53,8 @@
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
                             </div>
                             <div class="row no-gutters align-items-center">
-                                <button onclick="start3()">Start Games 3</button>
+                                <button style="margin:5px;" onclick="start3()">Start Games 3</button>
+                                <button onclick="reset3()">Reset Games 3</button>
                             </div>
                         </div>
                        
@@ -121,6 +124,37 @@
     function start3(){
         $.ajax({
             url: "game3_start",
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            type: "POST",
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    }
+
+    function reset1(){
+        $.ajax({
+            url: "game1_reset",
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            type: "POST",
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    }
+    function reset2(){
+        $.ajax({
+            url: "game2_reset",
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            type: "POST",
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    }
+    function reset3(){
+        $.ajax({
+            url: "game3_reset",
             headers: {'X-Requested-With': 'XMLHttpRequest'},
             type: "POST",
             success: function(response) {

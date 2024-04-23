@@ -60,6 +60,7 @@ class HomeController extends BaseController {
     "RIFA",
     "SULTON",
     "NAUFAL",
+    "YIRHAN",
     "REIVAL");
 
     private $kunci_jawaban_2 = array(
@@ -203,7 +204,15 @@ class HomeController extends BaseController {
             else if ($game_status == 3) {
                 foreach ($this->request->getPost('jawaban') as $element_jawaban) {
                     if (in_array(strtoupper($element_jawaban), $this->kunci_jawaban_3)) {
-                        $skor += 10;
+                        if(strtoupper($element_jawaban) == "MUTUAL BENEFICIAL RELATIONSHIP" || strtoupper($element_jawaban) == "OPEN MINDED ATTITUDE"){
+                            $skor += 30;
+                        } else if (strtoupper($element_jawaban) == "EQUAL OPPORTUNITIES" || strtoupper($element_jawaban) == "DEDICATED TEAMWORK" || strtoupper($element_jawaban) == "INNOVATIVE CULTURE" || strtoupper($element_jawaban) == "NOBLE SPIRIT"|| strtoupper($element_jawaban) == "CONTINUOUS LEARNING")
+                        { 
+                            $skor += 20;
+                        } else {
+                            $skor += 10;
+                        }
+                        
 
                         $db->query("UPDATE Rekap_Jawaban_3 SET Jumlah_Benar = Jumlah_Benar + 1 WHERE Jawaban = '" . $element_jawaban . "'");
                     }
@@ -304,5 +313,26 @@ class HomeController extends BaseController {
         $query2 = $db->query("UPDATE `user` SET STATUS=3 WHERE username IN (SELECT username FROM V_Jawaban2)");
                 
     }
+
+    public function game1_reset() {
+        $db = \Config\Database::connect(); 
+        $query = $db->query("UPDATE `game_status` SET game_1_start =NULL WHERE game_status=1");
+        $query2 = $db->query("UPDATE `user` SET STATUS=1 WHERE status='1-D'");
+
+    }
+
+    public function game2_reset() {
+        $db = \Config\Database::connect(); 
+        $query = $db->query("UPDATE `game_status` SET game_2_start =NULL WHERE game_status=2");
+        $query2 = $db->query("UPDATE `user` SET STATUS=2 WHERE status='2-D'");
+    }
+
+    public function game3_reset() {
+        $db = \Config\Database::connect(); 
+        $query = $db->query("UPDATE `game_status` SET game_3_start =NULL WHERE game_status=3");
+        $query2 = $db->query("UPDATE `user` SET STATUS=3 WHERE status='3-D'");
+    }
+
+
 }
 ?>
