@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Form Jawaban</title>
-    
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('/public/lib/select2/css/select2.min.css')?>">
-    <link href="<?php echo base_url('/public/css/bootstrap.min.css')?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('/public/css/app.min.css')?>" rel="stylesheet" type="text/css" id="app-style" />
-    <link href="<?php echo base_url('/public/custom/custom.css')?>" rel="stylesheet" type="text/css" />
 
-    <script src="<?php echo base_url('/public/js/vendor.min.js')?>"></script> 
+    <title>Form Jawaban</title>
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('/public/lib/select2/css/select2.min.css') ?>">
+    <link href="<?php echo base_url('/public/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('/public/css/app.min.css') ?>" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="<?php echo base_url('/public/custom/custom.css') ?>" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="<?= base_url(); ?>public/img/icon.png">
+    <script src="<?php echo base_url('/public/js/vendor.min.js') ?>"></script>
 </head>
 
 <body>
     <div class="account-pages d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="mb-lg-4 mb-3">
-            <img src="<?php echo base_url('/public/img/Bravo.png')?>" class="d-lg-block d-none" style="max-width: 30vw">
-            <img src="<?php echo base_url('/public/img/Bravo.png')?>" class="d-lg-none d-block" style="max-width: 60vw">
+            <img src="<?php echo base_url('/public/img/Bravo.png') ?>" class="d-lg-block d-none" style="max-width: 30vw">
+            <img src="<?php echo base_url('/public/img/Bravo.png') ?>" class="d-lg-none d-block" style="max-width: 60vw">
         </div>
 
         <div class="container">
@@ -29,7 +30,7 @@
                             <form id="formJawaban" class="">
                                 <?php
                                 if ($_SESSION['user_status'] == $_SESSION['game_status']) {
-                                    echo 
+                                    echo
                                     '
                                     <div style="">
                                         <div class="row py-4" id="title_cont">
@@ -81,8 +82,8 @@
     </div>
 </body>
 
-<script src="<?php echo base_url('/public/lib/select2/js/select2.min.js')?>"></script>
-<script src="<?php echo base_url('/public/lib/select2/js/i18n/id.js')?>"></script>
+<script src="<?php echo base_url('/public/lib/select2/js/select2.min.js') ?>"></script>
+<script src="<?php echo base_url('/public/lib/select2/js/i18n/id.js') ?>"></script>
 
 <script>
     $('#jawaban').select2({
@@ -93,7 +94,9 @@
         dropdownParent: $("#formJawaban"),
         tags: true,
         language: {
-            noResults: function () { return "Silakan tulis jawaban Anda" }
+            noResults: function() {
+                return "Silakan tulis jawaban Anda"
+            }
         },
         tokenSeparators: [',']
     })
@@ -102,7 +105,9 @@
         $.ajax({
             async: true,
             url: "TestSSE",
-            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
             type: "GET",
             timeout: 10000,
             cache: false,
@@ -110,7 +115,7 @@
                 if (response == '1') {
                     $('#btn_timer').click();
                 } else {
-                    long_polling_timer_start();    
+                    long_polling_timer_start();
                 }
             },
             error: function() {
@@ -118,8 +123,8 @@
             }
         });
     }
-    
-    $(document).ready(function () {
+
+    $(document).ready(function() {
         $('#btn_timer').fadeIn(300);
 
         long_polling_timer_start();
@@ -136,7 +141,7 @@
         countDownDate.setSeconds(countDownDate.getSeconds() + 62);
 
         // Update the count down every 1 second
-        var x = setInterval(function () {
+        var x = setInterval(function() {
 
             // Get today's date and time
             var now = new Date().getTime();
@@ -151,8 +156,8 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // Display the result in the element with id="demo"
-            document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-                + minutes + "m " + seconds + "s ";
+            document.getElementById("demo").innerHTML = days + "d " + hours + "h " +
+                minutes + "m " + seconds + "s ";
 
             // If the count down is finished, write some text
             if (distance < 0) {
@@ -164,13 +169,15 @@
         }, 1000);
     }
 
-    $("#formJawaban").on("submit", function (e) {
+    $("#formJawaban").on("submit", function(e) {
         e.preventDefault();
         $("#btn_submit").disableBtn();
-        
+
         $.ajax({
             url: "SubmitForm",
-            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
             type: "POST",
             data: $(this).serialize(),
             success: function(response) {
@@ -180,8 +187,8 @@
     });
 
     jQuery.fn.extend({
-        disableBtn: function () {
-            return this.each(function () {
+        disableBtn: function() {
+            return this.each(function() {
                 var $this = $(this).html();
                 $(this).html("Diproses");
                 $(this).prop("origin-text", $this);
@@ -190,8 +197,8 @@
             });
         },
 
-        enableBtn: function () {
-            return this.each(function () {
+        enableBtn: function() {
+            return this.each(function() {
                 if ($(this).prop("origin-text") != null)
                     $(this).html($(this).prop("origin-text"));
                 $(this).attr("disabled", false);
@@ -201,5 +208,6 @@
     });
 </script>
 
-<script src="<?php echo base_url('/public/js/app.min.js')?>"></script>
+<script src="<?php echo base_url('/public/js/app.min.js') ?>"></script>
+
 </html>

@@ -5,21 +5,22 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->get('/', 'HomeController::username');
 $routes->get('/dashboard', 'Home::index');
-$routes->get('/games1','Page::games1');
-$routes->get('/games2','Page::games2');
-$routes->get('/games3','Page::games3');
+$routes->get('/games1', 'Page::games1');
+$routes->get('/games2', 'Page::games2');
+$routes->get('/games3', 'Page::games3');
 
-$routes->get('/index','Serverside::index');
+$routes->get('/index', 'Serverside::index');
 //post data table
-$routes->post('Serverside/listdata','Serverside::listdata');
-$routes->post('Page/listdata1','Page::listdata1');
-$routes->post('Page/listdata2','Page::listdata2');
-$routes->post('Page/listdata3','Page::listdata3');
+$routes->post('Serverside/listdata', 'Serverside::listdata');
+$routes->post('Page/listdata1', 'Page::listdata1');
+$routes->post('Page/listdata2', 'Page::listdata2');
+$routes->post('Page/listdata3', 'Page::listdata3');
 
-$routes->post('Page/data_sample1','Page::data_sample1');
-$routes->post('Page/data_sample2','Page::data_sample2');
-$routes->post('Page/data_sample3','Page::data_sample3');
+$routes->post('Page/data_sample1', 'Page::data_sample1');
+$routes->post('Page/data_sample2', 'Page::data_sample2');
+$routes->post('Page/data_sample3', 'Page::data_sample3');
 
 //test
 $routes->get('sample', 'Sample::index');
