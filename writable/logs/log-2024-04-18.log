@@ -1,0 +1,34 @@
+CRITICAL - 2024-04-18 07:08:32 --> ErrorException: Undefined array key "search"
+[Method: GET, Route: listdata]
+in APPPATH\Models\Serverside_model.php on line 29.
+ 1 APPPATH\Models\Serverside_model.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "search"', 'D:\\Xampp\\htdocs\\ci-bravo\\app\\Models\\Serverside_model.php', 29)
+ 2 APPPATH\Models\Serverside_model.php(55): App\Models\Serverside_model->_get_datatables_query('pengguna', [...], [...], [...])
+ 3 APPPATH\Controllers\Serverside.php(30): App\Models\Serverside_model->get_datatables('pengguna', [...], [...], [...], [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Serverside->listdata()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Serverside))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-04-18 07:29:35 --> ErrorException: Undefined property: App\Controllers\Serverside::$db
+[Method: POST, Route: Serverside/get-log]
+in APPPATH\Controllers\Serverside.php on line 59.
+ 1 APPPATH\Controllers\Serverside.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Serverside::$db', 'D:\\Xampp\\htdocs\\ci-bravo\\app\\Controllers\\Serverside.php', 59)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Serverside->getLogData()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Serverside))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-04-18 07:48:51 --> TypeError: CodeIgniter\Database\BaseBuilder::orderBy(): Argument #1 ($orderBy) must be of type string, null given, called in D:\Xampp\htdocs\ci-bravo\app\Models\Serverside_model.php on line 45
+[Method: POST, Route: Serverside/listdata]
+in SYSTEMPATH\Database\BaseBuilder.php on line 1441.
+ 1 APPPATH\Models\Serverside_model.php(45): CodeIgniter\Database\BaseBuilder->orderBy(null, 'asc')
+ 2 APPPATH\Models\Serverside_model.php(55): App\Models\Serverside_model->_get_datatables_query('pengguna', [...], [...], [...])
+ 3 APPPATH\Controllers\Serverside.php(30): App\Models\Serverside_model->get_datatables('pengguna', [...], [...], [...], [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Serverside->listdata()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Serverside))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
